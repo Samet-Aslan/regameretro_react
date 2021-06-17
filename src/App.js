@@ -1,25 +1,56 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Nav from './Nav';
+import Section from './Section';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+let navitems = [
+  {name: "Home"},
+  {name: "GB Classic"},
+  {name: "GB Color"},
+  {name: "GB Advance"},
+  {name: "GB Advance SP"}
+];
+
+let sectionitems = [
+  {headline: "GB Classic", image: "url"},
+  {headline: "GB Color", image: "url"},
+  {headline: "GB Advance", image: "url"},
+  {headline: "GB Advance SP", image: "url"}
+];
+
+class App extends React.Component {
+    render(){
+
+      let navigation = [];
+      let section = [];
+      
+      navitems.forEach(function(item){
+          navigation.push(
+            <Nav name={item.name}/>
+          )
+      });
+
+      sectionitems.forEach(function(item){
+        section.push(
+          <Section name={item.headline}/>
+        )
+    });
+
+      return (
+        <div className="App">
+          <header className="App-header">
+            <ul>
+              {navigation}
+            </ul>   
+          </header>
+          <body>
+              {section}
+          </body>
+        </div>
+       
+      );    
+    } 
 }
 
 export default App;
