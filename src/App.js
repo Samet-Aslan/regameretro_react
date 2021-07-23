@@ -1,8 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import Nav from './Nav';
-import Section from './Section';
+import Nav from './components/Nav';
+import ProductSection from './components/ProductSection';
+import 'bulma/css/bulma.min.css';
+import { Navbar } from 'react-bulma-components';
+
 
 let navitems = [
   {name: "Home"},
@@ -33,20 +35,20 @@ class App extends React.Component {
 
       sectionitems.forEach(function(item){
         section.push(
-          <Section name={item.headline}/>
+          <ProductSection headline={item.headline}/>
         )
     });
 
       return (
         <div className="App">
-          <header className="App-header">
-            <ul>
+          {/* Section with Logo */}
+          {/* NavBar*/}
+          <Navbar>
               {navigation}
-            </ul>   
-          </header>
-          <body>
-              {section}
-          </body>
+          </Navbar>
+          {/* Items as Sections with Content - Image, Button, Text */}
+          {section}
+          {/* Footer */}
         </div>
        
       );    
